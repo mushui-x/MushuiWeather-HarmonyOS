@@ -11,6 +11,18 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
+    },
+    {
+      "name": "tab_home",
+      "value": "now"
+    },
+    {
+      "name": "tab_feature",
+      "value": "7days"
+    },
+    {
+      "name": "tab_setting",
+      "value": "setting"
     }
   ]
 }

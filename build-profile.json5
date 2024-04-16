@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/exciter/.ohos/config/auto_debug_MushuiWeather_cn.zhangmushui.weather_30086000768490133.cer",
+          "storePassword": "0000001BE8264678D49D6810536072929760923E82077BD36189103D2DFECCD40F07B26EC6437DD5D8B592",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BBC49CB113333176635724DC0BA9EB94CB20B0E012DD7D952F1A4CF0AAA09BA0E2E89D5248B3595",
+          "profile": "/Users/exciter/.ohos/config/auto_debug_MushuiWeather_cn.zhangmushui.weather_30086000768490133.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/exciter/.ohos/config/auto_debug_MushuiWeather_cn.zhangmushui.weather_30086000768490133.p12"
+        }
+      }
+    ],
     "compileSdkVersion": 9,
     "compatibleSdkVersion": 9,
     "products": [

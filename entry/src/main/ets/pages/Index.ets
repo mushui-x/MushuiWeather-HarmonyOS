@@ -1,17 +1,66 @@
+import { BreakpointSystem, BreakpointConstants, StyleConstants } from '@ohos/common'
+import { TabButtonModel, tabButtons } from '../viewmodel/IndexData'
+import { PageConstants } from '../constants/PageConstants'
+
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
+  @StorageProp('currentBreakpoint') currentBreakpoint: string = 'sm'
+  @StorageLink('IndexPage') currentPageIndex: number = 0
+  private breakpointSystem = new BreakpointSystem()
+
+  aboutToAppear() {
+    this.breakpointSystem.register()
+  }
+
+  aboutToDisappear() {
+    this.breakpointSystem.unregister()
+  }
 
   build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
+    Column() {
+      Tabs({
+        barPosition: this.currentBreakpoint === BreakpointConstants.BREAKPOINT_LG ? BarPosition.Start : BarPosition.End,
+        index: this.currentPageIndex
+      }) {
+        TabContent() {
+
+        }.tabBar(this.BottomNavigation(tabButtons[PageConstants.TAB_HOME_INDEX]))
+
+        TabContent() {
+
+        }.tabBar(this.BottomNavigation(tabButtons[PageConstants.TAB_FEATURE_INDEX]))
+
+        TabContent() {
+
+        }.tabBar(this.BottomNavigation(tabButtons[PageConstants.TAB_SETTING_INDEX]))
       }
-      .width('100%')
-    }
-    .height('100%')
+      .barWidth(this.currentBreakpoint === BreakpointConstants.BREAKPOINT_LG ? $r('app.float.bar_width') : StyleConstants.FULL_HEIGHT)
+      .barHeight(this.currentBreakpoint === BreakpointConstants.BREAKPOINT_LG ? StyleConstants.SIXTY_HEIGHT : $r('app.float.vp_fifty_six'))
+      .vertical(this.currentBreakpoint === BreakpointConstants.BREAKPOINT_LG)
+      .scrollable(false)
+      .onChange((index: number) => {
+        this.currentPageIndex = index
+      })
+    }.backgroundColor($r('app.color.page_background'))
+  }
+
+  @Builder
+  BottomNavigation(button: TabButtonModel) {
+    Column({ space: PageConstants.BUTTON_SPACE }) {
+      Image(this.currentPageIndex === button.index ? button.selectIcon : button.icon)
+        .objectFit(ImageFit.Contain)
+        .width($r('app.float.main_image_size'))
+        .height($r('app.float.main_image_size'))
+      Text(button.label)
+        .fontColor(this.currentPageIndex === button.index ? $r('app.color.focus_color') : Color.Black)
+        .opacity(this.currentPageIndex === button.index ? StyleConstants.FULL_OPACITY : StyleConstants.SIXTY_OPACITY)
+        .fontWeight(StyleConstants.FONT_WEIGHT_FIVE)
+        .textAlign(TextAlign.Center)
+        .fontSize($r('app.float.micro_font_size'))
+    }.width(StyleConstants.FULL_WIDTH)
+    .height(StyleConstants.FULL_HEIGHT)
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.Center)
   }
 }
