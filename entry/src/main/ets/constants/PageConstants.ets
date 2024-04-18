@@ -35,9 +35,9 @@ export class PageConstants {
    */
   static readonly TAB_HOME_INDEX: number = 0;
   /**
-   * Index of feature tab.
+   * Index of future tab.
    */
-  static readonly TAB_FEATURE_INDEX: number = 1;
+  static readonly TAB_FUTURE_INDEX: number = 1;
   /**
    * Index of setting tab.
    */

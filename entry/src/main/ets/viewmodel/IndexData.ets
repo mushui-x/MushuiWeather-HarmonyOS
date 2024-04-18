@@ -16,7 +16,7 @@ const tabButtons: TabButtonModel[] = [
     index: 1,
     icon: $r('app.media.ic_feature_normal'),
     selectIcon: $r('app.media.ic_feature_focus'),
-    label: $r('app.string.tab_feature')
+    label: $r("app.string.tab_future")
   },
   {
     index: 2,

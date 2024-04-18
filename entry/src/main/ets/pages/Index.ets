@@ -1,6 +1,9 @@
 import { BreakpointSystem, BreakpointConstants, StyleConstants } from '@ohos/common'
 import { TabButtonModel, tabButtons } from '../viewmodel/IndexData'
 import { PageConstants } from '../constants/PageConstants'
+import { Home } from '../components/Home'
+import { Future } from '../components/Future'
+import { Setting } from '../components/Setting'
 
 @Entry
 @Component
@@ -24,15 +27,15 @@ struct Index {
         index: this.currentPageIndex
       }) {
         TabContent() {
-
+          Home()
         }.tabBar(this.BottomNavigation(tabButtons[PageConstants.TAB_HOME_INDEX]))
 
         TabContent() {
-
-        }.tabBar(this.BottomNavigation(tabButtons[PageConstants.TAB_FEATURE_INDEX]))
+          Future()
+        }.tabBar(this.BottomNavigation(tabButtons[PageConstants.TAB_FUTURE_INDEX]))
 
         TabContent() {
-
+          Setting()
         }.tabBar(this.BottomNavigation(tabButtons[PageConstants.TAB_SETTING_INDEX]))
       }
       .barWidth(this.currentBreakpoint === BreakpointConstants.BREAKPOINT_LG ? $r('app.float.bar_width') : StyleConstants.FULL_HEIGHT)
