@@ -29,7 +29,7 @@ export class PageConstants {
   /**
    * MainPage url.
    */
-  static readonly MAIN_PAGE_URL: string = 'pages/Index';
+  static readonly MAIN_PAGE_URL: string = 'pages/MainPage';
   /**
    * Index of home tab.
    */
@@ -50,20 +50,4 @@ export class PageConstants {
    * Key of router get params: tabIndex.
    */
   static readonly TABLE_INDEX_KEY: string = 'tabIndex';
-  /**
-   * Key of router get params: orderList.
-   */
-  static readonly ORDER_LIST_KEY: string = 'orderList';
-  /**
-   * Key of router get params: order.
-   */
-  static readonly ORDER_KEY: string = 'order';
-  /**
-   * Key of router get params: orderIds.
-   */
-  static readonly ORDER_IDS_KEY: string = 'orderIds';
-  /**
-   * Key of router get params: id.
-   */
-  static readonly ID_KEY: string = 'id';
 }

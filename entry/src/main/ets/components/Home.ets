@@ -1,6 +1,12 @@
+import HomeViewModel from '../viewmodel/HomeViewModel'
+
 @Component
 export struct Home {
   @State message: string = 'Home'
+
+  aboutToAppear() {
+    HomeViewModel.getWeatherNow('101010100')
+  }
 
   build() {
     Row() {
