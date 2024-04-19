@@ -7,7 +7,7 @@ import { Setting } from '../components/Setting'
 
 @Entry
 @Component
-struct Index {
+struct MainPage {
   @StorageProp('currentBreakpoint') currentBreakpoint: string = 'sm'
   @StorageLink('IndexPage') currentPageIndex: number = 0
   private breakpointSystem = new BreakpointSystem()
