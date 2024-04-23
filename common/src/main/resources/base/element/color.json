@@ -2,7 +2,7 @@
   "color": [
     {
       "name": "page_background",
-      "value": "#f1f3f5"
+      "value": "#4DA5D63F"
     },
     {
       "name": "focus_color",
@@ -47,6 +47,31 @@
     {
       "name": "eighty_alpha_white",
       "value": "#CCFFFFFF"
+    },
+    {
+      "name": "color_333333",
+      "value": "#FF333333"
+    },
+    {
+      "name": "color_666666",
+      "value": "#FF666666"
+    },
+    {
+      "name": "color_999999",
+      "value": "#FF999999"
+    },
+    {
+      "name": "color_A5D63F",
+      "value": "#FFA5D63F"
+    },
+    {
+      "name": "color_B3A5D63F",
+      "value": "#B3A5D63F"
+    },
+    {
+      "name": "color_4DA5D63F",
+      "value": "#4DA5D63F"
     }
+
   ]
 }

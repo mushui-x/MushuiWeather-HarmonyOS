@@ -4,14 +4,25 @@ import ResponseResult from '@ohos/common/src/main/ets/viewmodel/ResponseResult'
  * 实时天气
  */
 export class WeatherNowData extends ResponseResult {
-  now: Now
+  now: Weather
 }
 
-export class Now {
+/**
+ * 24小时天气
+ */
+export class Weather24HData extends ResponseResult {
+  hourly: Weather[] = []
+}
+
+export class Weather {
   /**
    * 数据观测时间
    */
   obsTime: string = ''
+  /**
+   * 预报时间
+   */
+  fxTime: string = ''
   /**
    * 温度，默认单位：摄氏度
    */

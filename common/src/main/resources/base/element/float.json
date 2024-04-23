@@ -29,6 +29,10 @@
       "value": "24fp"
     },
     {
+      "name": "now_temp_font_size",
+      "value": "84fp"
+    },
+    {
       "name": "vp_one",
       "value": "1vp"
     },
@@ -61,6 +65,10 @@
       "value": "14vp"
     },
     {
+      "name": "vp_15",
+      "value": "15vp"
+    },
+    {
       "name": "vp_sixteen",
       "value": "16vp"
     },
@@ -77,8 +85,24 @@
       "value": "24vp"
     },
     {
+      "name": "vp_thirty",
+      "value": "30vp"
+    },
+    {
+      "name": "vp_47",
+      "value": "47vp"
+    },
+    {
       "name": "vp_fifty_six",
       "value": "56vp"
+    },
+    {
+      "name": "vp_sixty",
+      "value": "60vp"
+    },
+    {
+      "name": "vp_80",
+      "value": "80vp"
     },
     {
       "name": "commodity_item_height",
