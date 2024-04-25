@@ -12,9 +12,17 @@ export default class UrlConstants {
    */
   static readonly WEATHER_7D = '/v7/weather/7d'
   /**
+   * 15天天气
+   */
+  static readonly WEATHER_15D = '/v7/weather/15d'
+  /**
    * 24小时天气
    */
   static readonly WEATHER_24H = '/v7/weather/24h'
+  /**
+   * 1天天气指数
+   */
+  static readonly WEATHER_INDICES = '/v7/indices/1d'
   /**
    * key
    */

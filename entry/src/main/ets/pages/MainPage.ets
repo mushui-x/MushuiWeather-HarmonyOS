@@ -56,7 +56,7 @@ struct MainPage {
         .width($r('app.float.main_image_size'))
         .height($r('app.float.main_image_size'))
       Text(button.label)
-        .fontColor(this.currentPageIndex === button.index ? $r('app.color.focus_color') : Color.Black)
+        .fontColor(this.currentPageIndex === button.index ? Color.Black : $r('app.color.color_616060'))
         .opacity(this.currentPageIndex === button.index ? StyleConstants.FULL_OPACITY : StyleConstants.SIXTY_OPACITY)
         .fontWeight(StyleConstants.FONT_WEIGHT_FIVE)
         .textAlign(TextAlign.Center)

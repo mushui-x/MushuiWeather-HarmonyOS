@@ -1,4 +1,4 @@
-import { WeatherNowData, Weather24HData } from './WeatherData'
+import { WeatherNowData, WeatherNHData, WeatherNDData, WeatherIndicesData } from './WeatherData'
 
 @Observed
 export default class RefreshViewModel {
@@ -9,5 +9,13 @@ export default class RefreshViewModel {
   /**
    * 24小时天气
    */
-  public weather24HData: Weather24HData = null
+  public weather24HData: WeatherNHData = null
+  /**
+   * 7天天气
+   */
+  public weather7DData: WeatherNDData = null
+  /**
+   * 天气指数
+   */
+  public weatherIndicesData: WeatherIndicesData = null
 }

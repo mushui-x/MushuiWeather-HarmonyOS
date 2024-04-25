@@ -23,6 +23,14 @@
     {
       "name": "tab_setting",
       "value": "setting"
+    },
+    {
+      "name": "temp_n",
+      "value": "%sº"
+    },
+    {
+      "name": "windScale_n",
+      "value": "%s级"
     }
   ]
 }

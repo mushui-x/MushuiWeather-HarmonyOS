@@ -6,9 +6,9 @@
         "type": "HarmonyOS",
         "material": {
           "certpath": "/Users/exciter/.ohos/config/auto_debug_MushuiWeather_cn.zhangmushui.weather_30086000768490133.cer",
-          "storePassword": "0000001BE8264678D49D6810536072929760923E82077BD36189103D2DFECCD40F07B26EC6437DD5D8B592",
+          "storePassword": "0000001B790D1D5647FE51465FE8DBFBEAFCF45889D4987407E27BB98E9436DC1EBDE9E2FC65F05A200DBF",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001BBC49CB113333176635724DC0BA9EB94CB20B0E012DD7D952F1A4CF0AAA09BA0E2E89D5248B3595",
+          "keyPassword": "0000001B3C52D8CA5D5B9338ECDADA6F992EF0253F32ABFD7B895E1120E2004315D5880772E3AF8EAE41D5",
           "profile": "/Users/exciter/.ohos/config/auto_debug_MushuiWeather_cn.zhangmushui.weather_30086000768490133.p7b",
           "signAlg": "SHA256withECDSA",
           "storeFile": "/Users/exciter/.ohos/config/auto_debug_MushuiWeather_cn.zhangmushui.weather_30086000768490133.p12"
