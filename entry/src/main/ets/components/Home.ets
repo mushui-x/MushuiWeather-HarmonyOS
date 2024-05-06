@@ -2,35 +2,79 @@ import HomeViewModel from '../viewmodel/HomeViewModel'
 import { WeatherNowData, WeatherNHData, WeatherIndicesData, Weather, Indices } from '../viewmodel/WeatherData'
 import { StyleConstants, CommonDataSource } from '@Ohos/common'
 import RefreshViewModel from '../viewmodel/RefreshViewModel'
+import { requestPermissionsFromUser } from '@ohos/common'
+import { Permissions } from '@ohos.abilityAccessCtrl'
+import getLocationManager from '@ohos.geoLocationManager'
+import Logger from '@ohos/common/src/main/ets/utils/Logger'
+import { LocationListData } from '../viewmodel/LocationData'
 
 @Component
 export struct Home {
   @State refreshViewModel: RefreshViewModel = new RefreshViewModel()
 
   aboutToAppear() {
-    this.getWeatherNow()
-    this.getWeather24H()
-    this.getWeatherIndices()
+    this.checkLocationPermission()
   }
 
-  getWeatherNow() {
-    HomeViewModel.getWeatherNow('101010100').then((data: WeatherNowData) => {
+  checkLocationPermission() {
+    const permissions: Array<Permissions> = ['ohos.permission.LOCATION', 'ohos.permission.APPROXIMATELY_LOCATION']
+    requestPermissionsFromUser(getContext(), permissions,
+      () => {
+        // 权限申请成功
+        this.getLocation()
+      },
+      () => {
+        // 权限申请失败
+      })
+  }
+
+  getLocation() {
+    let requestInfo = {
+      'priority': getLocationManager.LocationRequestPriority.ACCURACY,
+      'timeInterval': 0,
+      'distanceInterval': 0,
+      'maxAccuracy': 0
+    }
+    let locationChange = (location: getLocationManager.Location) => {
+      Logger.info('locationChanger: data: ' + JSON.stringify(location))
+      this.lookupCity(`${location.longitude},${location.latitude}`)
+    }
+    getLocationManager.on('locationChange', requestInfo, locationChange)
+  }
+
+  lookupCity(location: string) {
+    HomeViewModel.lookupCity(location).then((data: LocationListData) => {
+      if (data?.location?.length > 0) {
+        this.refreshViewModel.location = data.location[0]
+        let locationId: string = data.location[0]?.id
+        this.refreshViewModel.weatherNowData
+        this.getWeatherNow(locationId)
+        this.getWeather24H(locationId)
+        this.getWeatherIndices(locationId)
+      }
+    }).catch((err: string | Resource) => {
+
+    })
+  }
+
+  getWeatherNow(location: string) {
+    HomeViewModel.getWeatherNow(location).then((data: WeatherNowData) => {
       this.refreshViewModel.weatherNowData = data
     }).catch((err: string | Resource) => {
 
     })
   }
 
-  getWeather24H() {
-    HomeViewModel.getWeather24H('101010100').then((data: WeatherNHData) => {
+  getWeather24H(location: string) {
+    HomeViewModel.getWeather24H(location).then((data: WeatherNHData) => {
       this.refreshViewModel.weather24HData = data
     }).catch((err: string | Resource) => {
 
     })
   }
 
-  getWeatherIndices() {
-    HomeViewModel.getWeatherIndices('101010100').then((data: WeatherIndicesData) => {
+  getWeatherIndices(location: string) {
+    HomeViewModel.getWeatherIndices(location).then((data: WeatherIndicesData) => {
       this.refreshViewModel.weatherIndicesData = data
     }).catch((err: string | Resource) => {
 
@@ -71,7 +115,7 @@ export struct Home {
   @Builder
   WeatherNow() {
     Column() {
-      Text('----')
+      Text(this.refreshViewModel?.location?.name)
         .fontColor($r('app.color.color_333333'))
         .fontSize($r('app.float.big_font_size'))
         .fontWeight(FontWeight.Medium)
@@ -146,33 +190,38 @@ export struct Home {
     if (this.refreshViewModel.weatherIndicesData?.daily.length > 0) {
       Grid() {
         LazyForEach(new CommonDataSource(this.refreshViewModel.weatherIndicesData?.daily), (item: Indices) => {
-          this.WeatherIndicesItem(item)
+          GridItem() {
+            this.WeatherIndicesItem(item)
+          }.width('48%')
         })
       }
-      .rowsTemplate('1f,1f')
       .layoutDirection(GridDirection.Row)
+      .maxCount(2)
+      .minCount(2)
       .columnsGap($r('app.float.vp_ten'))
       .rowsGap($r('app.float.vp_ten'))
+      .width(StyleConstants.FULL_WIDTH)
+      .padding({ left: $r('app.float.vp_15'), right: $r('app.float.vp_15') })
     }
   }
 
   @Builder
   WeatherIndicesItem(indices: Indices) {
-    Row() {
-      Text($r('app.string.windScale_n', indices?.name))
+    Column({ space: StyleConstants.TWELVE_SPACE }) {
+      Text(indices?.name)
         .fontColor($r('app.color.color_666666'))
+        .fontSize($r('app.float.small_font_size'))
+      Text(indices.category)
+        .fontColor($r('app.color.color_333333'))
         .fontSize($r('app.float.middle_font_size'))
-      Text($r('app.string.windScale_n', indices.category))
-        .fontColor($r('app.color.color_666666'))
-        .fontSize($r('app.float.bigger_font_size'))
         .fontWeight(FontWeight.Bold)
     }
-    .alignItems(VerticalAlign.Center)
-    .justifyContent(FlexAlign.SpaceBetween)
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.SpaceAround)
     .backgroundColor($r('app.color.color_B3A5D63F'))
     .borderRadius($r('app.float.vp_eight'))
     .padding({ left: $r('app.float.vp_twelve'), right: $r('app.float.vp_twelve') })
+    .width(StyleConstants.FULL_WIDTH)
     .height('70vp')
-    .layoutWeight(1)
   }
 }

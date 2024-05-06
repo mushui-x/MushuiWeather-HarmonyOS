@@ -37,24 +37,33 @@ export struct Future {
     Row() {
       Row({ space: StyleConstants.FIFTEEN_SPACE }) {
         Column({ space: StyleConstants.FOUR_SPACE }) {
-          Text('Today').fontColor($r('app.color.color_666666')).fontSize($r('app.float.smaller_font_size'))
-          Text(weather.text).fontColor($r('app.color.color_333333')).fontSize($r('app.float.smaller_font_size'))
+          Text(weather.fxDate).fontColor($r('app.color.color_333333')).fontSize($r('app.float.small_font_size'))
         }
 
         Column({ space: StyleConstants.FOUR_SPACE }) {
-          Text(weather.windDirDay).fontColor($r('app.color.color_666666')).fontSize($r('app.float.smaller_font_size'))
-          Text(weather.windScaleDay).fontColor($r('app.color.color_666666')).fontSize($r('app.float.smaller_font_size'))
+          Text((weather.textDay === weather.textNight) ? `${weather.textDay}` : `${weather.textDay}转${weather.textNight}`)
+            .fontColor($r('app.color.color_333333'))
+            .fontSize($r('app.float.small_font_size'))
+          Text(`${weather.windDirDay}${weather.windScaleDay}级`)
+            .fontColor($r('app.color.color_666666'))
+            .fontSize($r('app.float.smaller_font_size'))
         }
+        .justifyContent(FlexAlign.Start)
+        .alignItems(HorizontalAlign.Start)
       }.padding({ left: $r('app.float.vp_15'), right: $r('app.float.vp_15') })
 
       Row({ space: StyleConstants.FIFTEEN_SPACE }) {
         Column({ space: StyleConstants.FOUR_SPACE }) {
-          Text(weather.tempMax).fontColor($r('app.color.color_666666')).fontSize($r('app.float.smaller_font_size'))
-          Text(weather.tempMin).fontColor($r('app.color.color_666666')).fontSize($r('app.float.smaller_font_size'))
+          Text($r('app.string.temp_n', weather.tempMax))
+            .fontColor($r('app.color.color_333333'))
+            .fontSize($r('app.float.middle_font_size'))
+          Text($r('app.string.temp_n', weather.tempMin))
+            .fontColor($r('app.color.color_333333'))
+            .fontSize($r('app.float.middle_font_size'))
         }
 
-        Image($r('app.media.icon'))
-          .size({ width: $r('app.float.vp_twenty_four'), height: $r('app.float.vp_twenty_four') })
+        Image(`icons/${weather.iconDay}.svg`)
+          .size({ width: $r('app.float.vp_twenty'), height: $r('app.float.vp_twenty') })
       }.padding({ left: $r('app.float.vp_15'), right: $r('app.float.vp_15') })
     }
     .alignItems(VerticalAlign.Center)

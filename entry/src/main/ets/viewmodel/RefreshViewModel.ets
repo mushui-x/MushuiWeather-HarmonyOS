@@ -1,7 +1,12 @@
+import { Location } from './LocationData'
 import { WeatherNowData, WeatherNHData, WeatherNDData, WeatherIndicesData } from './WeatherData'
 
 @Observed
 export default class RefreshViewModel {
+  /**
+   * 当前位置
+   */
+  public location: Location = null
   /**
    * 当前天气
    */

@@ -1,5 +1,5 @@
 import { BreakpointSystem, BreakpointConstants, StyleConstants } from '@ohos/common'
-import { TabButtonModel, tabButtons } from '../viewmodel/IndexData'
+import { TabButtonModel, tabButtons } from '../viewmodel/TabData'
 import { PageConstants } from '../constants/PageConstants'
 import { Home } from '../components/Home'
 import { Future } from '../components/Future'

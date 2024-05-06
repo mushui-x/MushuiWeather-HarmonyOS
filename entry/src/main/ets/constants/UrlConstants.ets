@@ -1,8 +1,16 @@
 export default class UrlConstants {
   /**
-   * host
+   * host for weather
    */
-  static readonly SERVER = 'https://devapi.qweather.com'
+  static readonly SERVER_WEATHER = 'https://devapi.qweather.com'
+  /**
+   * host for geo
+   */
+  static readonly SERVER_GEO = 'https://geoapi.qweather.com'
+  /**
+   * 城市查询
+   */
+  static readonly CITY_LOOKUP = '/v2/city/lookup'
   /**
    * 实时天气
    */

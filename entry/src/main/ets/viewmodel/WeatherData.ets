@@ -3,7 +3,7 @@ import ResponseResult from '@ohos/common/src/main/ets/viewmodel/ResponseResult'
 /**
  * 实时天气
  */
-export class WeatherNowData extends ResponseResult {
+export class    WeatherNowData extends ResponseResult {
   now: Weather
 }
 
@@ -30,6 +30,10 @@ export class Weather {
    * 预报时间
    */
   fxTime: string = ''
+  /**
+   * 预报日期
+   */
+  fxDate: string = ''
   /**
    * 温度，默认单位：摄氏度
    */

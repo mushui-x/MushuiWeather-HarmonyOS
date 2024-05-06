@@ -12,7 +12,7 @@ class FutureViewModel {
    */
   getWeather7D(location: string): Promise<WeatherNDData> {
     return new Promise(async (resolve: Function, reject: Function) => {
-      let url = `${UrlConstants.SERVER}${UrlConstants.WEATHER_7D}`
+      let url = `${UrlConstants.SERVER_WEATHER}${UrlConstants.WEATHER_7D}`
       url += `?location=${location}&key=${UrlConstants.PRIVATE_KEY}`
       httpRequestGet(url).then((data: ResponseResult) => {
         if (data.code === HttpConstants.SERVER_CODE_SUCCESS) {

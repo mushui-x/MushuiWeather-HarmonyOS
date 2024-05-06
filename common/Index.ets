@@ -9,3 +9,5 @@ export { StyleConstants } from './src/main/ets/constants/StyleConstants'
 export { httpRequestGet, httpRequestPost } from './src/main/ets/utils/HttpUtil'
 
 export { CommonDataSource } from './src/main/ets/utils/CommonDataSource'
+
+export { checkAccessToken, requestPermissionsFromUser } from './src/main/ets/utils/PermissionHelper'
